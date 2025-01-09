@@ -1,0 +1,21 @@
+name: Test Self Hosted Runner
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Set build name"
+        default: "main"
+
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: bvg-runner
+    steps:
+      - name: The staging server will be updated with COMMIT_SHA
+        run: echo "${{ github.event.inputs.name }}"
+      - name: Connect SSH
+        run: |
+        bash /home/actions-runner/deployconnect/push_deploy.sh
+        shell: bash
