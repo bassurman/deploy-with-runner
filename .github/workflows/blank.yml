@@ -13,9 +13,8 @@ jobs:
   build:
     runs-on: bvg-runner
     steps:
-      - name: The staging server will be updated with COMMIT_SHA
+      - name: The server will be updated 
         run: echo "${{ github.event.inputs.name }}"
       - name: Connect SSH
-        run: |
-        bash /home/actions-runner/deployconnect/push_deploy.sh
+        run: bash /home/actions-runner/deployconnect/push_deploy.sh
         shell: bash
