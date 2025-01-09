@@ -16,5 +16,7 @@ jobs:
       - name: The server will be updated 
         run: echo "${{ github.event.inputs.name }}"
       - name: Connect SSH
-        run: bash /home/actions-runner/deployconnect/push_deploy.sh
+        run: bash $DEPLOY_SCRIPT_LIVE
         shell: bash
+        env:
+          DEPLOY_SCRIPT_LIVE: ${{ vars.DEPLOY_SCRIPT_LIVE }}
